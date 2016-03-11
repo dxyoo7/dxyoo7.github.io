@@ -1,7 +1,7 @@
 ---
 title: syntax of markdown
 date: 2016-03-03 11:37:54
-tags:
+tags: Markdown
 ---
 
 
