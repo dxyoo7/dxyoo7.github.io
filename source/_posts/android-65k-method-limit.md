@@ -66,6 +66,15 @@ Multidex支持Android 5.0及更高版本Android 5.0和更高的Runtime 如art，
 
 ## 用Gradle配置使用Multidex
 
+Android 的 Gradle插件在 Android Build Tool 21.1开始就支持使用multidex了。
+
+设置你的应用程序开发项目中使用multidex配置，要求你做出一些修改您的应用程序开发项目：
+
+> * 修改Gradle的配置，支持multidex
+> * 修改你的manifest。让其支持multidexapplication类
+
+修改Gradle的build如下：
+
 ``` Groovy
 android {
 	compileSdkVersion 21
@@ -83,3 +92,79 @@ android {
 }
 ```
 
+**Tips: 你可以在Gradle配置文件中的 multiDexEnabled 在 defaultConfig、buildType、productFlavor选项设置。**
+
+在manifest文件中，添加MultidexApplication Class的引用，如下所示：
+
+``` Xml
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.android.multidex.myapplication">
+    <application
+        ...
+        android:name="android.support.multidex.MultiDexApplication">
+        ...
+    </application>
+</manifest>
+```
+
+当然，如果你重写了 Application，就对自定义Application的继承方式做一个修改。
+
+## Multidex的方式的局限性
+
+虽然我们开起来multidex是一个极好的东西，但是multidex还是存在自己的局限性，我们在开发测试之前要清楚局限性是什么：
+
+如果二DEX文件太大，安装分割dex文件是一个复杂的过程，可能会导致应用程序无响应（ANR）的错误。在这种情况下，你应该尽量的减小dex
+文件的大小和删除无用的逻辑，而不是完全依赖于multidex。
+在Android 4.0设备（API Level 14）之前，由于Dalvik linearalloc bug（问题22586），multidex很可能是无法运行的。
+如果希望运行在Level 14之前的Android系统版本，请先确保完整的测试和使用。
+应用程序使用了multiedex配置的，会造成使用比较大的内存。当然，可能还会引起dalvik虚拟机的崩溃(issue 78035)。
+对于应用程序比较复杂的，存在较多的library的项目。multidex可能会造成不同依赖项目间的dex文件函数相互调用，找不到方法。
+
+
+## 优化multidex开发和构建
+
+一个multidex的配置，对系统apk的构建、签名、打包复杂性大大的增加。这就意味着，你每一次的构建过程都是相当耗时的。
+
+为了加快我们的开发速度，加快构建的过程，我们可以在Gradle productFlavors新建出来一个 development flavor 和 production flavor 来满足我们不同构建需求。
+
+下面是一个列子演示我们如何设置这些flavors在Gradle build文件中:
+
+``` Groovy
+android {
+    productFlavors {
+        // Define separate dev and prod product flavors.
+        dev {
+            // dev utilizes minSDKVersion = 21 to allow the Android gradle plugin
+            // to pre-dex each module and produce an APK that can be tested on
+            // Android Lollipop without time consuming dex merging processes.
+            minSdkVersion 21
+        }
+        prod {
+            // The actual minSdkVersion for the application.
+            minSdkVersion 14
+        }
+    }
+          ...
+    buildTypes {
+        release {
+            runProguard true
+            proguardFiles getDefaultProguardFile(‘proguard-android.txt‘),
+                                                 ‘proguard-rules.pro‘
+        }
+    }
+}
+dependencies {
+  compile ‘com.android.support:multidex:1.0.0‘
+}
+```
+
+在你完成了上处的配置修改之后，你配置productFlavor 和 buildType来使用 ，devDebug 变种app。使用这些变种app，可以设置proguard disable、multidex enable方便我们测试。
+
+这些配置需要针对Android Gradle插件做如下操作：
+
+在分包前，编译应用程序中的每一个module包括依赖项目，这个步骤称为 pre-dexing。
+
+> * include每一个dex文件
+> * 最重要的是，对于主dex文件，不会做切分。以保证计算速度。
+> * 这样设置既能够保证我们的最终报是一个使用了multidex模式的，而又不影响我们平时开发的测试效率。
