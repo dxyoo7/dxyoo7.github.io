@@ -58,7 +58,7 @@ origin  https://github.com/USERNAME/REPOSITORY.git (push)
 $ git remote set-url origin git@github.com:USERNAME/REPOSITORY2.git
 ```
 
-记得修改 ``hexo _config.yml``` 文件，仓库地址
+记得修改 ``hexo _config.yml`` 文件，仓库地址
 
 ``` Xml
 deploy:
