@@ -29,7 +29,8 @@ Java号称对Unicode提供天然的支持，这话在很久很久以前就已经
 
 例如我们有一个增补字符？？？（哈哈，你看到了三个问号对吧？因为我的系统显示不出这个字符），它在Unicode中的编号是U+2F81A，当在程序中需要使用这个字符的时候，就可以这样来写：
 
-```Java代码  收藏代码
+```
+Java代码  收藏代码
 String s=String.valueOf(Character.toChars(0x2F81A));  
 char[]chars=s.toCharArray();  
 for(char c:chars){  
