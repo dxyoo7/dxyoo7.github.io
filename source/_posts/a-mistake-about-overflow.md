@@ -1,5 +1,5 @@
 ---
-title: 一个整型值益处的错误
+title: 一个整型值益出的错误
 date: 2017-02-21 11:37:54
 tags: Java
 ---
@@ -32,7 +32,7 @@ obj_A = {
 
 看似没啥问题，``` obj_A.proprity() - obj_other().proprity ```  值很小 或者 ``` obj_other().proprity － obj_A.proprity() ``` 值很大，排完序应该在第一位，可是事实却是永远排在最后一位。
 
-事实上我遇到了整型益处的问题，Integer.MIN_VALUE - obj_other.proprity()，这样的计算会发生益处，得到的值很大, 并不是预期的值，同理也一样。
+事实上我遇到了整型益出的问题，Integer.MIN_VALUE - obj_other.proprity()，这样的计算会发生益出，得到的值很大, 并不是预期的值，同理也一样。
 
 于是问题迎刃而解，只要给obj_A返回一个适当大小的负数即可，保证不会溢出。
 
