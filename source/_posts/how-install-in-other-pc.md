@@ -10,4 +10,7 @@ tags: hexo
 
 1. 使用git clone git@github.com:{username}/{username}.github.io.git拷贝仓库；
 2. 切换源文件分支，（因为hexo使用master管理存放生成的page文件，我使用的hexo分支管理源文件）所以我要切换回hexo分支。
-3. npm install hexo、npm install、npm install hexo-deployer-git（记得，不需要hexo init这条指令）。
+3. 安装 npm install hexo -g (如果一安装跳过)，  
+npm install  ， npm install hexo-deployer-git， 确定 theme/* 主题目录存在，否则提示No layout index.html（记得，不需要hexo init这条指令）。
+
+
