@@ -1,0 +1,503 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Java(Android) 约定规范 · Martin's Blog</title><meta name="description" content="Java(Android) 约定规范 - Martin D"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://dxyoo7.github.io/atom.xml" title="Martin's Blog"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/sunchongsheng" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/pinggod" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">Java(Android) 约定规范</h1><div class="post-info">2016年11月1日</div><div class="post-content"><h1 id="1-项目指南"><a href="#1-项目指南" class="headerlink" title="1.项目指南"></a>1.项目指南</h1><h2 id="1-1项目结构"><a href="#1-1项目结构" class="headerlink" title="1.1项目结构"></a>1.1项目结构</h2><p>新项目应该遵循<a href="http://tools.android.com/tech-docs/new-build-system/user-guide#TOC-Project-Structure" target="_blank" rel="noopener">Android Gradle插件用户指南</a>中定义的Android Gradle项目结构。</p>
+<h2 id="1-2文件命名"><a href="#1-2文件命名" class="headerlink" title="1.2文件命名"></a>1.2文件命名</h2><h3 id="1-2-1类命名"><a href="#1-2-1类命名" class="headerlink" title="1.2.1类命名"></a>1.2.1类命名</h3><p>类命名按 <strong>驼峰命名法 UpperCamelCase</strong> 规则书写.</p>
+<p>对于继承自Android组件的类，应该以组件名结尾；比如：SignInActivity, SignInFragment, ImageUploaderService, ChangePasswordDialog.</p>
+<h3 id="资源文件"><a href="#资源文件" class="headerlink" title="资源文件"></a>资源文件</h3><p>资源文件按 <strong>小写_下划线</strong> 规则书写</p>
+<h4 id="1-2-2-1-Drawable-文件"><a href="#1-2-2-1-Drawable-文件" class="headerlink" title="1.2.2.1 Drawable 文件"></a>1.2.2.1 Drawable 文件</h4><p>drawables 命名约定：</p>
+<table>
+<thead>
+<tr>
+<th>Asset Type</th>
+<th>Prefix</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Action bar</td>
+<td><code>ab_</code></td>
+<td><code>ab_stacked.9.png</code></td>
+</tr>
+<tr>
+<td>Button</td>
+<td><code>btn_</code></td>
+<td><code>btn_send_pressed.9.png</code></td>
+</tr>
+<tr>
+<td>Dialog</td>
+<td><code>dialog_</code></td>
+<td><code>dialog_top.9.png</code></td>
+</tr>
+<tr>
+<td>Divider</td>
+<td><code>divider_</code></td>
+<td><code>divider_horizontal.9.png</code></td>
+</tr>
+<tr>
+<td>Icon</td>
+<td><code>ic_</code></td>
+<td><code>ic_star.png</code></td>
+</tr>
+<tr>
+<td>Menu</td>
+<td><code>menu_</code></td>
+<td><code>menu_submenu_bg.9.png</code></td>
+</tr>
+<tr>
+<td>Notification</td>
+<td><code>notification_</code></td>
+<td><code>notification_bg.9.png</code></td>
+</tr>
+<tr>
+<td>Tabs</td>
+<td><code>tab_</code></td>
+<td><code>tab_pressed.9.png</code></td>
+</tr>
+</tbody>
+</table>
+<p>icon的命名约定(取自<a href="http://developer.android.com/design/style/iconography.html" target="_blank" rel="noopener">Android iconography guidelines</a>):</p>
+<table>
+<thead>
+<tr>
+<th>Asset Type</th>
+<th>Prefix</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Icons</td>
+<td><code>ic_</code></td>
+<td><code>ic_star.png</code></td>
+</tr>
+<tr>
+<td>Launcher icons</td>
+<td><code>ic_launcher</code></td>
+<td><code>ic_launcher_calendar.png</code></td>
+</tr>
+<tr>
+<td>Menu icons and Action Bar icons</td>
+<td><code>ic_menu</code></td>
+<td><code>ic_menu_archive.png</code></td>
+</tr>
+<tr>
+<td>Status bar icons</td>
+<td><code>ic_stat_notify</code></td>
+<td><code>ic_stat_notify_msg.png</code></td>
+</tr>
+<tr>
+<td>Tab icons</td>
+<td><code>ic_tab</code></td>
+<td><code>ic_tab_recent.png</code></td>
+</tr>
+<tr>
+<td>Dialog icons</td>
+<td><code>ic_dialog</code></td>
+<td><code>ic_dialog_info.png</code></td>
+</tr>
+</tbody>
+</table>
+<p>状态选择器(selector states)命名约定:</p>
+<table>
+<thead>
+<tr>
+<th>State</th>
+<th>Suffix</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Normal</td>
+<td><code>_normal</code></td>
+<td><code>btn_order_normal.9.png</code></td>
+</tr>
+<tr>
+<td>Pressed</td>
+<td><code>_pressed</code></td>
+<td><code>btn_order_pressed.9.png</code></td>
+</tr>
+<tr>
+<td>Focused</td>
+<td><code>_focused</code></td>
+<td><code>btn_order_focused.9.png</code></td>
+</tr>
+<tr>
+<td>Disabled</td>
+<td><code>_disabled</code></td>
+<td><code>btn_order_disabled.9.png</code></td>
+</tr>
+<tr>
+<td>Selected</td>
+<td><code>_selected</code></td>
+<td><code>btn_order_selected.9.png</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="1-2-2-2-layout-文件"><a href="#1-2-2-2-layout-文件" class="headerlink" title="1.2.2.2 layout 文件"></a>1.2.2.2 layout 文件</h4><p>布局文件应该与它们打算用于的Android组件的名称匹配，但将顶层组件名称移动到开头。 例如，如果我们为<code>SignInActivity</code>创建一个布局，布局文件的名称应该是<code>activity_sign_in.xml</code></p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Class Name</th>
+<th>Layout Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Activity</td>
+<td><code>UserProfileActivity</code></td>
+<td><code>activity_user_profile.xml</code></td>
+</tr>
+<tr>
+<td>Fragment</td>
+<td><code>SignUpFragment</code></td>
+<td><code>fragment_sign_up.xml</code></td>
+</tr>
+<tr>
+<td>Dialog</td>
+<td><code>ChangePasswordDialog</code></td>
+<td><code>dialog_change_password.xml</code></td>
+</tr>
+<tr>
+<td>AdapterView item</td>
+<td>—</td>
+<td><code>item_person.xml</code></td>
+</tr>
+<tr>
+<td>Partial layout</td>
+<td>—</td>
+<td><code>partial_stats_bar.xml</code></td>
+</tr>
+</tbody>
+</table>
+<p>一个稍微不同的情况是，当我们创建一个布局将被一个<code>Adapter</code>渲染，例如填充一个 <code>ListView</code>。 在这种情况下，布局的名称应以<code>item_</code>开头。</p>
+<p>请注意，有些情况下，这些规则将无法应用。 例如，当创建旨在作为其他布局的一部分的布局文件时。 在这种情况下，您应该使用前缀<code>partial_</code>。</p>
+<h4 id="1-2-2-3-Menu-文件"><a href="#1-2-2-3-Menu-文件" class="headerlink" title="1.2.2.3 Menu 文件"></a>1.2.2.3 Menu 文件</h4><p>与布局文件类似，Menu 文件应与组件的名称匹配。 例如，如果我们定义将要在<code>UserActivity</code>中使用的菜单文件，那么文件的名称应该是<code>activity_user.xml</code></p>
+<p>一个好的做法是不要将“menu”一词作为名称的一部分，因为这些文件已经位于<code>menu</code>目录中。</p>
+<h4 id="1-2-2-4-Values-文件"><a href="#1-2-2-4-Values-文件" class="headerlink" title="1.2.2.4 Values 文件"></a>1.2.2.4 Values 文件</h4><p>values文件夹中的资源文件应为 <strong>复数</strong> ，例如 <code>strings.xml</code>，<code>styles.xml</code>，<code>colors.xml</code>，<code>dimensions.xml</code>，<code>attrs.xml</code></p>
+<h1 id="2-代码指南"><a href="#2-代码指南" class="headerlink" title="2 代码指南"></a>2 代码指南</h1><h2 id="2-1-Java-语法规则"><a href="#2-1-Java-语法规则" class="headerlink" title="2.1 Java 语法规则"></a>2.1 Java 语法规则</h2><h3 id="2-1-1-不要忽略异常"><a href="#2-1-1-不要忽略异常" class="headerlink" title="2.1.1 不要忽略异常"></a>2.1.1 不要忽略异常</h3><p>你永远不要这样做:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setServerPort</span><span class="params">(String value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        serverPort = Integer.parseInt(value);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NumberFormatException e) &#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也许你会认为：你的代码永远不会碰到这种出错的情况，或者处理异常并不重要，可类似上述忽略异常的代码将会在代码中埋下一颗地雷，说不定哪天它就会炸到某个人了。你必须在代码中以某种规矩来处理所有的异常。根据情况的不同，处理的方式也会不一样。</p>
+<p><em>无论何时，空的catch语句都会让人感到不寒而栗。虽然很多情况下确实是一切正常，但至少你不得不去忧虑它。在Java中你无法逃离这种恐惧感。</em> -<a href="http://www.artima.com/intv/solid4.html" target="_blank" rel="noopener">James Gosling</a></p>
+<p>可接受的替代方案包括（按照推荐顺序）：</p>
+<ul>
+<li>向方法的调用者抛出异常。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setServerPort</span><span class="params">(String value)</span> <span class="keyword">throws</span> NumberFormatException </span>&#123;</span><br><span class="line">    serverPort = Integer.parseInt(value);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>根据抽象级别抛出新的异常。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setServerPort</span><span class="params">(String value)</span> <span class="keyword">throws</span> ConfigurationException </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        serverPort = Integer.parseInt(value);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> ConfigurationException(<span class="string">"Port "</span> + value + <span class="string">" is not valid."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>默默地处理错误并在catch {}语句块中替换为合适的值。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** Set port. If value is not a valid number, 80 is substituted. */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setServerPort</span><span class="params">(String value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        serverPort = Integer.parseInt(value);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</span><br><span class="line">        serverPort = <span class="number">80</span>;  <span class="comment">// default port for server</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>捕获异常并抛出一个新的RuntimeException。这种做法比较危险：只有确信发生该错误时最合适的做法就是崩溃，才会这么做。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** Set port. If value is not a valid number, die. */</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setServerPort</span><span class="params">(String value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        serverPort = Integer.parseInt(value);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"port "</span> + value <span class="string">" is invalid, "</span>, e);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>请记住，最初的异常是传递给构造方法的RuntimeException。如果代码必须在Java 1.3版本下编译，需要忽略该异常</p>
+</blockquote>
+<ul>
+<li>最后一招：如果确信忽略异常比较合适，那就忽略吧，但必须把理想的原因注释出来：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** If value is not a valid number, original port number is used. */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">setServerPort</span><span class="params">(String value)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        serverPort = Integer.parseInt(value);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NumberFormatException e) &#123;</span><br><span class="line">        <span class="comment">// Method is documented to just ignore invalid user input.</span></span><br><span class="line">        <span class="comment">// serverPort will just be unchanged.</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-1-2-不要捕获顶级的Exception"><a href="#2-1-2-不要捕获顶级的Exception" class="headerlink" title="2.1.2 不要捕获顶级的Exception"></a>2.1.2 不要捕获顶级的Exception</h3><p>有时在捕获Exception时偷懒也是很吸引人的，类似如下的处理方式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    someComplicatedIOFunction();        <span class="comment">// may throw IOException</span></span><br><span class="line">    someComplicatedParsingFunction();   <span class="comment">// may throw ParsingException</span></span><br><span class="line">    someComplicatedSecurityFunction();  <span class="comment">// may throw SecurityException</span></span><br><span class="line">    <span class="comment">// phew, made it all the way</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (Exception e) &#123;                 <span class="comment">// I'll just catch all exceptions</span></span><br><span class="line">    handleError();                      <span class="comment">// with one generic handler!</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>绝大部分情况下，捕获顶级的Exception或Throwable都是不合适的，Throwable更不合适，因为它还包含了Error异常。这种捕获非常危险。这意味着本来不必考虑的Exception（包括类似ClassCastException的RuntimeException）被卷入到应用程序级的错误处理中来。这会让代码运行的错误变得模糊不清。这意味着，假如别人在你调用的代码中加入了新的异常，编译器将无法帮助你识别出各种不同的错误类型。绝大部分情况下，无论如何你都不应该用同一种方式来处理各种不同类型的异常。</p>
+<p>本规则也有极少数例外情况：期望捕获所有类型错误的特定的测试代码和顶层代码（为了阻止这些错误在用户界面上显示出来，或者保持批量工作的运行）。这种情况下可以捕获顶级的Exception（或Throwable）并进行相应的错误处理。在开始之前，你应该非常仔细地考虑一下，并在注释中解释清楚为什么这么做是安全的。</p>
+<p>比捕获顶级Exception更好的方案：</p>
+<ul>
+<li><p>分开捕获每一种异常，在一条try语句后面跟随多个catch 语句块。这样可能会有点别扭，但总比捕获所有Exception要好些。请小心别在catch语句块中重复执行大量的代码。</p>
+</li>
+<li><p>重新组织一下代码，使用多个try块，使错误处理的粒度更细一些。把IO从解析内容的代码中分离出来，根据各自的情况进行单独的错误处理。</p>
+</li>
+<li><p>再次抛出异常。很多时候在你这个级别根本就没必要捕获这个异常，只要让方法抛出该异常即可。</p>
+</li>
+</ul>
+<p>请记住：异常是你的朋友！当编译器指出你没有捕获某个异常时，请不要皱眉头。而应该微笑：编译器帮助你找到了代码中的运行时（runtime）问题。</p>
+<h3 id="2-1-3-不要使用-finalizers"><a href="#2-1-3-不要使用-finalizers" class="headerlink" title="2.1.3 不要使用 finalizers"></a>2.1.3 不要使用 finalizers</h3><p>Finalizer提供了一个机会，可以让对象被垃圾回收器回收时执行一些代码。</p>
+<p>优点：便于执行清理工作，特别是针对外部资源。</p>
+<p>缺点：调用finalizer的时机并不确定，甚至根本就不会调用。</p>
+<p>结论：我们不要使用finalizers。大多数情况下，可以用优秀的异常处理代码来执行那些要放入finalizer的工作。如果确实是需要使用finalizer，那就定义一个close()方法（或类似的方法），并且在文档中准确地记录下需要调用该方法的时机。相关例程可以参见InputStream。这种情况下还是适合使用finalizer的，但不需要在finalizer中输出日志信息，因为日志不能因为这个而被撑爆。</p>
+<h3 id="2-1-4-使用完全限定Import"><a href="#2-1-4-使用完全限定Import" class="headerlink" title="2.1.4 使用完全限定Import"></a>2.1.4 使用完全限定Import</h3><p>当需要使用foo包中的Bar类时，存在两种可能的import方式：</p>
+<ul>
+<li><p><code>import foo.*;</code></p>
+<p> 有点：可能会减少import语句。</p>
+</li>
+<li><p><code>import foo.Bar;</code></p>
+<p> 优点：实际用到的类一清二楚。代码的可读性更好，便于维护。</p>
+</li>
+</ul>
+<p>结论：用后一种写法来<code>import</code>所有的Android代码。不过导入java标准库(<code>java.util.*</code>、<code>java.io.*</code>等) 和单元测试代码 (<code>junit.framework.*</code>)时可以例外。</p>
+<h2 id="2-2-Java类库规范"><a href="#2-2-Java类库规范" class="headerlink" title="2.2 Java类库规范"></a>2.2 Java类库规范</h2><p>使用Android Java类库和工具存在一些惯例。有时这些惯例会作出重大变化，可之前的代码也许会用到过时的模板或类库。如果用到这部分过时的代码，沿用已有的风格就是了（参阅Consistency)。创建新的组件时就不要再使用过时的类库了。</p>
+<h2 id="2-3-Java编程规范"><a href="#2-3-Java编程规范" class="headerlink" title="2.3 Java编程规范"></a>2.3 Java编程规范</h2><h3 id="2-3-1-使用Javadoc标准注释"><a href="#2-3-1-使用Javadoc标准注释" class="headerlink" title="2.3.1 使用Javadoc标准注释"></a>2.3.1 使用Javadoc标准注释</h3><p>每个文件的开头都应该有一句版权说明。然后下面应该是package包语句和import语句，每个语句块之间用空行分隔。然后是类或接口的定义。在Javadoc注释中，应描述类或接口的用途。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment"> * Copyright (C) 2015 The Android Open Source Project</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Licensed under the Apache License, Version 2.0 (the "License");</span></span><br><span class="line"><span class="comment"> * you may not use this file except in compliance with the License.</span></span><br><span class="line"><span class="comment"> * You may obtain a copy of the License at</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> *      http://www.apache.org/licenses/LICENSE-2.0</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * Unless required by applicable law or agreed to in writing, software</span></span><br><span class="line"><span class="comment"> * distributed under the License is distributed on an "AS IS" BASIS,</span></span><br><span class="line"><span class="comment"> * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span></span><br><span class="line"><span class="comment"> * See the License for the specific language governing permissions and</span></span><br><span class="line"><span class="comment"> * limitations under the License.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">package</span> com.android.internal.foo;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> android.os.Blah;</span><br><span class="line"><span class="keyword">import</span> android.view.Yada;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.sql.ResultSet;</span><br><span class="line"><span class="keyword">import</span> java.sql.SQLException;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Does X and Y and provides an abstraction for Z.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>每个类和自建的public方法必须包含Javadoc注释，注释至少要包含描述该类或方法用途的语句。并且该语句应该用第三人称的动词形式来开头。</p>
+<p>例如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/** Returns the correctly rounded positive square root of a double value. */</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">double</span> <span class="title">sqrt</span><span class="params">(<span class="keyword">double</span> a)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>或者</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Constructs a new String by converting the specified array of</span></span><br><span class="line"><span class="comment"> * bytes using the platform's default character encoding.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">String</span><span class="params">(<span class="keyword">byte</span>[] bytes)</span> </span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果所有的Javadoc都会写成“sets Foo”，对于那些无关紧要的类似setFoo()的get和set语句是不必撰写Javadoc的。如果方法执行了比较复杂的操作（比如执行强制约束或者产生很重要的副作用），那就必须进行注释。如果“Foo”属性的意义不容易理解，也应该进行注释。</p>
+<p>无论是public的还是其它类型的，所有自建的方法都将受益于Javadoc。public的方法是API的组成部分，因此更需要Javadoc。</p>
+<p>Android目前还没有规定自己的Javadoc注释撰写规范，但是应该遵守<a href="http://www.oracle.com/technetwork/java/javase/documentation/index-137868.html" target="_blank" rel="noopener">Sun Javadoc约定</a>。</p>
+<h3 id="2-3-2-编写简短的方法"><a href="#2-3-2-编写简短的方法" class="headerlink" title="2.3.2 编写简短的方法"></a>2.3.2 编写简短的方法</h3><p>为了把规模控制在合理范围内，方法应该保持简短和重点突出。不过，有时较长的方法也是合适的，所以对方法的代码长度并没有硬性的限制。如果方法代码超过了40行，就该考虑是否可以在不损害程序结构的前提下进行分拆。</p>
+<h3 id="2-3-4-在标准的位置定义字段"><a href="#2-3-4-在标准的位置定义字段" class="headerlink" title="2.3.4 在标准的位置定义字段"></a>2.3.4 在标准的位置定义字段</h3><p>字段应该定义在文件开头，或者紧挨着使用这些字段的方法之前。</p>
+<h3 id="2-2-1-属性的定义你和命名"><a href="#2-2-1-属性的定义你和命名" class="headerlink" title="2.2.1 属性的定义你和命名"></a>2.2.1 属性的定义你和命名</h3><p>属性应该定义在 <strong>文件的顶部</strong> 并且他们应该遵循以下规则：</p>
+<ul>
+<li>Private （私有）, non-static（非静态）属性名以  <strong>m</strong> 开头.</li>
+<li>Private （私有）, static（静态） 属性以 <strong>s</strong> 开头.</li>
+<li>其它属性以小写字母开头.</li>
+<li>final static (常量) 全部大写 ALL_CAPS_WITH_UNDERSCORES.</li>
+</ul>
+<p>Example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> SOME_CONSTANT = <span class="number">42</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> publicField;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> MyClass sSingleton;</span><br><span class="line">    <span class="keyword">int</span> mPackagePrivate;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> mPrivate;</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> mProtected;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-3-将缩略词作为单词"><a href="#2-2-3-将缩略词作为单词" class="headerlink" title="2.2.3 将缩略词作为单词"></a>2.2.3 将缩略词作为单词</h3><table>
+<thead>
+<tr>
+<th>Good</th>
+<th>Bad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>XmlHttpRequest</code></td>
+<td><code>XMLHTTPRequest</code></td>
+</tr>
+<tr>
+<td><code>getCustomerId</code></td>
+<td><code>getCustomerID</code></td>
+</tr>
+<tr>
+<td><code>String url</code></td>
+<td><code>String URL</code></td>
+</tr>
+<tr>
+<td><code>long id</code></td>
+<td><code>long ID</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-2-4-使用空格缩进"><a href="#2-2-4-使用空格缩进" class="headerlink" title="2.2.4 使用空格缩进"></a>2.2.4 使用空格缩进</h3><p>使用 <strong>4 个空格</strong> 缩进下面的代码块:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (x == <span class="number">1</span>) &#123;</span><br><span class="line">    x++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使用 <strong>8 个空格</strong> 行格式对齐缩进:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Instrument i =</span><br><span class="line">        someLongExpression(that, wouldNotFit, on, one, line);</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-5-使用标准括号风格"><a href="#2-2-5-使用标准括号风格" class="headerlink" title="2.2.5 使用标准括号风格"></a>2.2.5 使用标准括号风格</h3><p>大括号与它们之前的代码在同一行上.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">func</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (something) &#123;</span><br><span class="line">            <span class="comment">// ...</span></span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (somethingElse) &#123;</span><br><span class="line">            <span class="comment">// ...</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// ...</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>需要在语句周围括号，除非条件和body块适合一行。</p>
+<p>如果条件和body块同一行，同时这行的长度小于最大行长，那么括号不不需要，比如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition) body();</span><br></pre></td></tr></table></figure>
+<p> <strong>不好的做法</strong>:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (condition)</span><br><span class="line">    body();  <span class="comment">// bad!</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-2-6-注解"><a href="#2-2-6-注解" class="headerlink" title="2.2.6 注解"></a>2.2.6 注解</h3><h4 id="2-2-6-1-注解实践"><a href="#2-2-6-1-注解实践" class="headerlink" title="2.2.6.1 注解实践"></a>2.2.6.1 注解实践</h4><p>根据 安卓代码风格指南，Java里面有些预定义注释的标准实践。</p>
+<ul>
+<li><p><code>@Deparected</code> 无论何时一个元素被标注废弃，必须使用 <code>@Deparected</code>. If you use the @Deprecated annotation, you must also have a @deprecated Javadoc tag and it should name an alternate implementation. In addition, remember that a @Deprecated method is still supposed to work. If you see old code that has a @deprecated Javadoc tag, please add the @Deprecated annotation.</p>
+</li>
+<li><p><code>@Override</code>: @Override 注解 <strong>必须使用</strong> , 当一个方法重载或实现它父类方法的时候. 例如, 如果使用一个 @inheritdocs Javadoc 标签, 从一个类（不是一个接口）派生，你还必须注释该方法@Overrides 父类的方法。</p>
+</li>
+<li><p><code>@SuppressWarnings</code>: The @SuppressWarnings annotation should only be used under circumstances where it is impossible to eliminate a warning. If a warning passes this “impossible to eliminate” test, the @SuppressWarnings annotation must be used, so as to ensure that all warnings reflect actual problems in the code.</p>
+</li>
+</ul>
+<p>More information about annotation guidelines can be found <a href="http://source.android.com/source/code-style.html#use-standard-java-annotations" target="_blank" rel="noopener">here</a>.</p>
+<h4 id="2-2-6-2-Annotations-style"><a href="#2-2-6-2-Annotations-style" class="headerlink" title="2.2.6.2 Annotations style"></a>2.2.6.2 Annotations style</h4><p><strong>Classes, Methods and Constructors</strong></p>
+<p>When annotations are applied to a class, method, or constructor, they are listed after the documentation block and should appear as <strong>one annotation per line</strong> .</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* This is the documentation block about the class */</span></span><br><span class="line"><span class="meta">@AnnotationA</span></span><br><span class="line"><span class="meta">@AnnotationB</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyAnnotatedClass</span> </span>&#123; &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Fields</strong></p>
+<p>Annotations applying to fields should be listed <strong>on the same line</strong>, unless the line reaches the maximum line length.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Nullable</span> <span class="meta">@Mock</span> DataManager mDataManager;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-7-限制变量的作用范围"><a href="#2-2-7-限制变量的作用范围" class="headerlink" title="2.2.7 限制变量的作用范围"></a>2.2.7 限制变量的作用范围</h3><p>局部变量的作用范围应该是限制为最小的（Effective Java第29条）。使用局部变量，可以增加代码的可读性和可维护性，并且降低发生错误的可能性。每个变量都应该在最小范围的代码块中进行声明，该代码块的大小只要能够包含所有对该变量的使用即可。</p>
+<p>应该在第一次用到局部变量的地方对其进行声明。几乎所有局部变量声明都应该进行初始化。如果还缺少足够的信息来正确地初始化变量，那就应该推迟声明，直至可以初始化为止 - (<a href="https://source.android.com/source/code-style.html#limit-variable-scope" target="_blank" rel="noopener">Android code style guidelines</a>)</p>
+<h3 id="2-2-8-对Import语句排序"><a href="#2-2-8-对Import语句排序" class="headerlink" title="2.2.8 对Import语句排序"></a>2.2.8 对Import语句排序</h3><p>如果你使用IDE，比如Android Studio，你不用担心因为你的IDE已经遵守这些规则了。如果不是，请看下面。</p>
+<p>import语句的次序应该如下：</p>
+<ol>
+<li>Android imports</li>
+<li>Imports from third parties (com, junit, net, org)</li>
+<li>java and javax</li>
+<li>Same project imports</li>
+</ol>
+<p>为了精确匹配IDE的配置，import顺序应该是：</p>
+<ul>
+<li>在每组内部按字母排序，大写字母排在小写字母的前面。</li>
+<li>每个大组之间应该空一行（android、com、junit、net、org、java、javax）。</li>
+</ul>
+<p>更多 <a href="https://source.android.com/source/code-style.html#limit-variable-scope" target="_blank" rel="noopener">点这</a></p>
+<h3 id="2-2-9-Logging-使用"><a href="#2-2-9-Logging-使用" class="headerlink" title="2.2.9 Logging 使用"></a>2.2.9 Logging 使用</h3><p>使用<code>Log</code>类提供的方法来打印输出错误或者其它的信息，帮助我们定位问题。</p>
+<ul>
+<li><code>Log.v(String tag, String msg)</code> (verbose)</li>
+<li><code>Log.d(String tag, String msg)</code> (debug)</li>
+<li><code>Log.i(String tag, String msg)</code> (information)</li>
+<li><code>Log.w(String tag, String msg)</code> (warning)</li>
+<li><code>Log.e(String tag, String msg)</code> (error)</li>
+</ul>
+<p>一个通用的规则，我们使用 <code>static final</code> 类名定义tag。例如:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MyClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String TAG = MyClass.class.getSimpleName();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">myMethod</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        Log.e(TAG, <span class="string">"My error message"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>VERBOSE 和 DEBUG 日志 <strong>必须</strong> 在release 版本中关掉。也推荐关掉 INFORMATION, WARNING and ERROR 级别的日志，但是你可能想要保持打开为了在release 版本中定位问题。如果你决定打开他们，你必须保证不要再日子里泄漏一些敏感的信息，比如email地址，用户id等。</p>
+<p>只会在debug版本中显示的日志：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (BuildConfig.DEBUG) Log.d(TAG, <span class="string">"The value of x is "</span> + x);</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-10-类成员的排序"><a href="#2-2-10-类成员的排序" class="headerlink" title="2.2.10 类成员的排序"></a>2.2.10 类成员的排序</h3><p>这不是唯的答案，但是使用一个 <strong>逻辑性</strong> 和 <strong>一致性</strong> 的排序将改善你代码的可读性和可学性。推荐使用一下排序</p>
+<ol>
+<li>Constants(常量)</li>
+<li>Fields(成员)</li>
+<li>Constructors(构造)</li>
+<li>Override methods and callbacks (public or private)(重写方法和回调)</li>
+<li>Public methods (公共方法)</li>
+<li>Private methods (私有方法)</li>
+<li>Inner classes or interfaces (内部类和接口)</li>
+</ol>
+<p>Example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	 <span class="keyword">private</span> String mTitle;</span><br><span class="line">    <span class="keyword">private</span> TextView mTextViewTitle;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setTitle</span><span class="params">(String title)</span> </span>&#123;</span><br><span class="line">    	mTitle = title;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setUpView</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">AnInnerClass</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果你的类继承一个 <strong>Android组件</strong> 例如一个Activity 或Fragment，一个好的做法是 <strong>匹配组件的生命周期</strong> 排序重写方法。比如你继承Activity实现了<code>onCreate()</code>, <code>onDestroy()</code>, <code>onPause()</code> 和 <code>onResume()</code>, 那么正确的做法是：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	<span class="comment">//Order matches Activity lifecycle</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onCreate</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onResume</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onPause</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDestroy</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-11-方法中参数的排序"><a href="#2-2-11-方法中参数的排序" class="headerlink" title="2.2.11 方法中参数的排序"></a>2.2.11 方法中参数的排序</h3><p>当你编写Android程序时，一个常见定义方法是写一个 <code>Context</code> 参数，如果你正在写一个这样的方法，必须将 <code>Context</code> 放在第一个参数。</p>
+<p>相反 <strong>callback</strong> 接口应该永远放在最后一个参数。</p>
+<p>例如:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Context always goes first</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> User <span class="title">loadUser</span><span class="params">(Context context, <span class="keyword">int</span> userId)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Callbacks always go last</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">loadUserAsync</span><span class="params">(Context context, <span class="keyword">int</span> userId, UserCallback callback)</span></span>;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-13-字符常量、命名、取值"><a href="#2-2-13-字符常量、命名、取值" class="headerlink" title="2.2.13 字符常量、命名、取值"></a>2.2.13 字符常量、命名、取值</h3><p>在Andoid SDK中有许多使用了类似于健值对(key-value pair)的元素，像 <code>SharedPreferences</code>, <code>Bundle</code>, 和 <code>Intent</code>，这样及时一个很小的app也要定义许多字符常量。</p>
+<p>当使用这些组件，你 <strong>必须</strong> 定义很多 <code>static final</code> 的 key，你应该使用下面这些前缀表示他们：</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Field Name Prefix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SharedPreferences</td>
+<td><code>PREF_</code></td>
+</tr>
+<tr>
+<td>Bundle</td>
+<td><code>BUNDLE_</code></td>
+</tr>
+<tr>
+<td>Fragment Arguments</td>
+<td><code>ARGUMENT_</code></td>
+</tr>
+<tr>
+<td>Intent Extra</td>
+<td><code>EXTRA_</code></td>
+</tr>
+<tr>
+<td>Intent Action</td>
+<td><code>ACTION_</code></td>
+</tr>
+</tbody>
+</table>
+<p>注意Fragment 的参数-<code>Fragment.getArguments()</code>-其实也是一个Bundle。然而，更准确的使用Bundle，我们应该定义不同的前缀区分它们，像上面那样。</p>
+<p>例如:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Note the value of the field is the same as the name to avoid duplication issues</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> String PREF_EMAIL = <span class="string">"PREF_EMAIL"</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> String BUNDLE_AGE = <span class="string">"BUNDLE_AGE"</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> String ARGUMENT_USER_ID = <span class="string">"ARGUMENT_USER_ID"</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Intent-related items use full package name as value</span></span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> String EXTRA_SURNAME = <span class="string">"com.myapp.extras.EXTRA_SURNAME"</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">final</span> String ACTION_OPEN_USER = <span class="string">"com.myapp.action.ACTION_OPEN_USER"</span>;</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-14-Fragments-Activities-中的参数"><a href="#2-2-14-Fragments-Activities-中的参数" class="headerlink" title="2.2.14 Fragments Activities 中的参数"></a>2.2.14 Fragments Activities 中的参数</h3><p>当数据被传递到 <code>Activity</code> 或 <code>Fragment</code> 通过一个 <code>Intent</code> 或 <code>Bundle</code>，传不同的值 <strong>必须</strong> 按照下面描述的规则执行。</p>
+<p>当一个 <code>Activity</code> 或 <code>Fragment</code> 携带参数时，应该提供一个 <code>publi static</code> 方法有利于创建相关的 <code>Intent</code> 或 <code>Fragment</code>。</p>
+<p>在Activity中创建Intent 携带参数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Intent <span class="title">getStartIntent</span><span class="params">(Context context, User user)</span> </span>&#123;</span><br><span class="line">	Intent intent = <span class="keyword">new</span> Intent(context, ThisActivity.class);</span><br><span class="line">	intent.putParcelableExtra(EXTRA_USER, user);</span><br><span class="line">	<span class="keyword">return</span> intent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>对于Fragment应该命名为 <code>newInstance</code> 并且处理创建Framgnet携带的参数：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> UserFragment <span class="title">newInstance</span><span class="params">(User user)</span> </span>&#123;</span><br><span class="line">	UserFragment fragment = <span class="keyword">new</span> UserFragment;</span><br><span class="line">	Bundle args = <span class="keyword">new</span> Bundle();</span><br><span class="line">	args.putParcelable(ARGUMENT_USER, user);</span><br><span class="line">	fragment.setArguments(args)</span><br><span class="line">	<span class="keyword">return</span> fragment;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>注意 1</strong>: 这些方法应该在类的顶部创建。</p>
+<p><strong>注意 2</strong>: 如果我们提过上面描述的方法，额外的参数应该是 <code>private</code>，因为它不应该暴露给外部类。</p>
+<h3 id="2-2-15-限制代码行的长度"><a href="#2-2-15-限制代码行的长度" class="headerlink" title="2.2.15 限制代码行的长度"></a>2.2.15 限制代码行的长度</h3><p>每行代码的长度应该不超过100个字符。</p>
+<p>有关本规则的讨论有很多，最后的结论还是最多不超过100个字符。</p>
+<h4 id="2-2-15-1-换行策略"><a href="#2-2-15-1-换行策略" class="headerlink" title="2.2.15.1 换行策略"></a>2.2.15.1 换行策略</h4><p>There isn’t an exact formula that explains how to line-wrap and quite often different solutions are valid. However there are a few rules that can be applied to common cases.</p>
+<p><strong>Break at operators</strong></p>
+<p>When the line is broken at an operator, the break comes <strong>before</strong> the operator. For example:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> longName = anotherVeryLongVariable + anEvenLongerOne - thisRidiculousLongOne</span><br><span class="line">        + theFinalOne;</span><br></pre></td></tr></table></figure>
+<p><strong>Assignment Operator Exception</strong></p>
+<p>An exception to the <code>break at operators</code> rule is the assignment operator <code>=</code>, where the line break should happen <strong>after</strong> the operator.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> longName =</span><br><span class="line">        anotherVeryLongVariable + anEvenLongerOne - thisRidiculousLongOne + theFinalOne;</span><br></pre></td></tr></table></figure>
+<p><strong>Method chain case</strong></p>
+<p>When multiple methods are chained in the same line - for example when using Builders - every call to a method should go in its own line, breaking the line before the <code>.</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Picasso.with(context).load(<span class="string">"http://ribot.co.uk/images/sexyjoe.jpg"</span>).into(imageView);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Picasso.with(context)</span><br><span class="line">        .load(<span class="string">"http://ribot.co.uk/images/sexyjoe.jpg"</span>)</span><br><span class="line">        .into(imageView);</span><br></pre></td></tr></table></figure>
+<p><strong>Long parameters case</strong></p>
+<p>When a method has many parameters or its parameters are very long, we should break the line after every comma <code>,</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">loadPicture(context, <span class="string">"http://ribot.co.uk/images/sexyjoe.jpg"</span>, mImageViewProfilePicture, clickListener, <span class="string">"Title of the picture"</span>);</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">loadPicture(context,</span><br><span class="line">        <span class="string">"http://ribot.co.uk/images/sexyjoe.jpg"</span>,</span><br><span class="line">        mImageViewProfilePicture,</span><br><span class="line">        clickListener,</span><br><span class="line">        <span class="string">"Title of the picture"</span>);</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-16-RxJava-chains-styling"><a href="#2-2-16-RxJava-chains-styling" class="headerlink" title="2.2.16 RxJava chains styling"></a>2.2.16 RxJava chains styling</h3><p>Rx chains of operators require line-wrapping. Every operator must go in a new line and the line should be broken before the <code>.</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> Observable&lt;Location&gt; <span class="title">syncLocations</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> mDatabaseHelper.getAllLocations()</span><br><span class="line">            .concatMap(<span class="keyword">new</span> Func1&lt;Location, Observable&lt;? extends Location&gt;&gt;() &#123;</span><br><span class="line">                <span class="meta">@Override</span></span><br><span class="line">                 <span class="keyword">public</span> Observable&lt;? extends Location&gt; call(Location location) &#123;</span><br><span class="line">                     <span class="keyword">return</span> mRetrofitService.getLocation(location.id);</span><br><span class="line">                 &#125;</span><br><span class="line">            &#125;)</span><br><span class="line">            .retry(<span class="keyword">new</span> Func2&lt;Integer, Throwable, Boolean&gt;() &#123;</span><br><span class="line">                 <span class="meta">@Override</span></span><br><span class="line">                 <span class="function"><span class="keyword">public</span> Boolean <span class="title">call</span><span class="params">(Integer numRetries, Throwable throwable)</span> </span>&#123;</span><br><span class="line">                     <span class="keyword">return</span> throwable <span class="keyword">instanceof</span> RetrofitError;</span><br><span class="line">                 &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-XML-style-rules"><a href="#2-3-XML-style-rules" class="headerlink" title="2.3 XML style rules"></a>2.3 XML style rules</h2><h3 id="2-3-1-Use-self-closing-tags"><a href="#2-3-1-Use-self-closing-tags" class="headerlink" title="2.3.1 Use self closing tags"></a>2.3.1 Use self closing tags</h3><p>When an XML element doesn’t have any contents, you <strong>must</strong> use self closing tags.</p>
+<p>This is good:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:id</span>=<span class="string">"@+id/text_view_profile"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">	<span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>This is <strong>bad</strong> :</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Don\'t do this! --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">TextView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/text_view_profile"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span> &gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">TextView</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="2-3-2-Resources-naming"><a href="#2-3-2-Resources-naming" class="headerlink" title="2.3.2 Resources naming"></a>2.3.2 Resources naming</h3><p>Resource IDs and names are written in <strong>lowercase_underscore</strong>.</p>
+<h4 id="2-3-2-1-ID-naming"><a href="#2-3-2-1-ID-naming" class="headerlink" title="2.3.2.1 ID naming"></a>2.3.2.1 ID naming</h4><p>IDs should be prefixed with the name of the element in lowercase underscore. For example:</p>
+<table>
+<thead>
+<tr>
+<th>Element</th>
+<th>Prefix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TextView</code></td>
+<td><code>text_</code></td>
+</tr>
+<tr>
+<td><code>ImageView</code></td>
+<td><code>image_</code></td>
+</tr>
+<tr>
+<td><code>Button</code></td>
+<td><code>button_</code></td>
+</tr>
+<tr>
+<td><code>Menu</code></td>
+<td><code>menu_</code></td>
+</tr>
+</tbody>
+</table>
+<p>Image view example:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ImageView</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:id</span>=<span class="string">"@+id/image_profile"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_width</span>=<span class="string">"wrap_content"</span></span></span><br><span class="line"><span class="tag">    <span class="attr">android:layout_height</span>=<span class="string">"wrap_content"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Menu example:</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">menu</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">item</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:id</span>=<span class="string">"@+id/menu_done"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:title</span>=<span class="string">"Done"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">menu</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-3-2-2-Strings"><a href="#2-3-2-2-Strings" class="headerlink" title="2.3.2.2 Strings"></a>2.3.2.2 Strings</h4><p>String names start with a prefix that identifies the section they belong to. For example <code>registration_email_hint</code> or <code>registration_name_hint</code>. If a string <strong>doesn’t belong</strong> to any section, then you should follow the rules below:</p>
+<table>
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error_</code></td>
+<td>An error message</td>
+</tr>
+<tr>
+<td><code>msg_</code></td>
+<td>A regular information message</td>
+</tr>
+<tr>
+<td><code>title_</code></td>
+<td>A title, i.e. a dialog title</td>
+</tr>
+<tr>
+<td><code>action_</code></td>
+<td>An action such as “Save” or “Create”</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-3-2-3-Styles-and-Themes"><a href="#2-3-2-3-Styles-and-Themes" class="headerlink" title="2.3.2.3 Styles and Themes"></a>2.3.2.3 Styles and Themes</h4><p>Unless the rest of resources, style names are written in <strong>UpperCamelCase</strong>.</p>
+<h3 id="2-3-3-Attributes-ordering"><a href="#2-3-3-Attributes-ordering" class="headerlink" title="2.3.3 Attributes ordering"></a>2.3.3 Attributes ordering</h3><p>As a general rule you should try to group similar attributes together. A good way of ordering the most common attributes is:</p>
+<ol>
+<li>View Id</li>
+<li>Style</li>
+<li>Layout width and layout height</li>
+<li>Other layout attributes, sorted alphabetically</li>
+<li>Remaining attributes, sorted alphabetically</li>
+</ol>
+<h2 id="2-4-Tests-style-rules"><a href="#2-4-Tests-style-rules" class="headerlink" title="2.4 Tests style rules"></a>2.4 Tests style rules</h2><h3 id="2-4-1-Unit-tests"><a href="#2-4-1-Unit-tests" class="headerlink" title="2.4.1 Unit tests"></a>2.4.1 Unit tests</h3><p>Test classes should match the name of the class the tests are targeting, followed by <code>Test</code>. For example, if we create a test class that contains tests for the <code>DatabaseHelper</code>, we should name it <code>DatabaseHelperTest</code>.</p>
+<p>Test methods are annotated with <code>@Test</code> and should generally start with the name of the method that is being tested, followed by a precondition and/or expected behaviour.</p>
+<ul>
+<li>Template: <code>@Test void methodNamePreconditionExpectedBehaviour()</code></li>
+<li>Example: <code>@Test void signInWithEmptyEmailFails()</code></li>
+</ul>
+<p>Precondition and/or expected behaviour may not always be required if the test is clear enough without them.</p>
+<p>Sometimes a class may contain a large amount of methods, that at the same time require several tests for each method. In this case, it’s recommendable to split up the test class into multiple ones. For example, if the <code>DataManager</code> contains a lot of methods we may want to divide it into <code>DataManagerSignInTest</code>, <code>DataManagerLoadUsersTest</code>, etc. Generally you will be able to see what tests belong together because they have common <a href="https://en.wikipedia.org/wiki/Test_fixture" target="_blank" rel="noopener">test fixtures</a>.</p>
+<h3 id="2-4-2-Espresso-tests"><a href="#2-4-2-Espresso-tests" class="headerlink" title="2.4.2 Espresso tests"></a>2.4.2 Espresso tests</h3><p>Every Espresso test class usually targets an Activity, therefore the name should match the name of the targeted Activity followed by <code>Test</code>, e.g. <code>SignInActivityTest</code></p>
+<p>When using the Espresso API it is a common practice to place chained methods in new lines.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">onView(withId(R.id.view))</span><br><span class="line">        .perform(scrollTo())</span><br><span class="line">        .check(matches(isDisplayed()))</span><br></pre></td></tr></table></figure>
+<h1 id="License"><a href="#License" class="headerlink" title="License"></a>License</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Copyright 2015 Ribot Ltd.</span><br><span class="line"></span><br><span class="line">Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span><br><span class="line">you may not use this file except in compliance with the License.</span><br><span class="line">You may obtain a copy of the License at</span><br><span class="line"></span><br><span class="line">    http://www.apache.org/licenses/LICENSE-2.0</span><br><span class="line"></span><br><span class="line">Unless required by applicable law or agreed to in writing, software</span><br><span class="line">distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span><br><span class="line">WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span><br><span class="line">See the License for the specific language governing permissions and</span><br><span class="line">limitations under the License.</span><br></pre></td></tr></table></figure>
+</div></article></div></main><footer><div class="paginator"><a href="/2016/11/01/how-enable-strictmode/" class="prev">上一篇</a><a href="/2016/09/22/git-branch-manage/" class="next">下一篇</a></div><div class="copyright"><p>© 2015 - 2017 <a href="http://dxyoo7.github.io">Martin D</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> 管理git生成的多个ssh key · Martin's Blog</title><meta name="description" content="管理git生成的多个ssh key - Martin D"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://dxyoo7.github.io/atom.xml" title="Martin's Blog"></head><body><div class="wrap"><header><a href="/" class="logo-link"><img src="/favicon.png" alt="logo"></a><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">BLOG</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">ARCHIVE</a></li><li class="nav-list-item"><a href="http://weibo.com/sunchongsheng" target="_blank" class="nav-list-link">WEIBO</a></li><li class="nav-list-item"><a href="https://github.com/pinggod" target="_blank" class="nav-list-link">GITHUB</a></li><li class="nav-list-item"><a href="/atom.xml" target="_self" class="nav-list-link">RSS</a></li></ul></header><main class="container"><div class="post"><article class="post-block"><h1 class="post-title">管理git生成的多个ssh key</h1><div class="post-info">2016年5月6日</div><div class="post-content"><h2 id="问题阐述"><a href="#问题阐述" class="headerlink" title="问题阐述"></a>问题阐述</h2><p>当有多个git账号的时候，比如一个github，用于自己进行一些开发活动，再来一个gitlab，一般是公司内部的git。这两者你的邮箱如果不同的话，就会涉及到一个问题，生成第二个git的key的时候会覆盖第一个的key，导致必然有一个用不了。</p>
+<h2 id="问题解决"><a href="#问题解决" class="headerlink" title="问题解决"></a>问题解决</h2><p>我们可以在~/.ssh目录下新建一个config文件配置一下，就可以解决问题</p>
+<p>具体步骤</p>
+<blockquote>
+<ul>
+<li>生成第一个ssh key(这里我用于github，用的gmail邮箱)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"yourmail@gmail.com"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p>这里不要一路回传，让你选择在哪里选择存放key的时候写个名字，比如 id_rsa_github，之后的两个可以回车。<br>完成之后我们可以看到~/.ssh目录下多了两个文件</p>
+<blockquote>
+<ul>
+<li>生成第二个ssh key（这里我用于gitlab，用的是公司邮箱）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C <span class="string">"yourmail@gmail.com"</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p> 还是一样不要一路回车，在第一个对话的时候继续写个名字，比如 id_rsa_gitlab,之后的两个可以回车。<br>完成之后我们可以看到如2中图所标记，一样出现两个文件。（一个公钥一个私钥）</p>
+<blockquote>
+<ul>
+<li><p>打开ssh-agent<br>这里如果你用的github官方的bash，’ssh-agent -s’,如果是其他的，比如’msysgit,eval $(ssh-agent -s)`</p>
+</li>
+<li><p>添加私钥</p>
+</li>
+</ul>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh-add ~/.ssh/id_rsa_github</span><br><span class="line">ssh-add ~/.ssh/id_rsa_gitlab</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li>创建并修改config文件</li>
+</ul>
+</blockquote>
+<p>在~/.ssh/目录下新建文件，然后将名字后缀一起改成config即可<br>在bash下的话直接’touch config’ 即可。<br>添加一下内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gitlab</span></span><br><span class="line">Host git.mycompany.com</span><br><span class="line">    HostName git.mycompany.com  //这里填你们公司的git网址即可</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_gitlab</span><br><span class="line">    User zhangjun</span><br><span class="line"></span><br><span class="line"><span class="comment"># github</span></span><br><span class="line">Host github.com</span><br><span class="line">    HostName github.com</span><br><span class="line">    PreferredAuthentications publickey</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_github</span><br><span class="line">    User ZJsnowman</span><br></pre></td></tr></table></figure>
+<blockquote>
+<ul>
+<li><p>在github和gitlab上添加公钥即可，这里不再多说。</p>
+</li>
+<li><p>测试</p>
+</li>
+</ul>
+</blockquote>
+<p>github<br>‘ssh -vT git@github.com’</p>
+<p>gitlab<br>‘ssh -vT git@git.mycompany.com’</p>
+<p>-v 是输出编译信息，然后根据编译信息自己去解决问题吧。就我自己来说一般是config里的host那块写错了。</p>
+<h2 id="补充一下"><a href="#补充一下" class="headerlink" title="补充一下"></a>补充一下</h2><p>如果之前有设置全局用户名和邮箱的话，需要unset一下</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global --<span class="built_in">unset</span> user.name</span><br><span class="line">git config --global --<span class="built_in">unset</span> user.email</span><br></pre></td></tr></table></figure>
+<p>然后在不同的仓库下设置局部的用户名和邮箱<br>比如在公司的repository下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config user.name <span class="string">"yourname"</span></span><br><span class="line">git config user.email <span class="string">"youremail"</span></span><br></pre></td></tr></table></figure></p>
+<p>在自己的github的仓库在执行刚刚的命令一遍即可。</p>
+<p>这样就可以在不同的仓库，已不同的账号登录。</p>
+</div></article></div></main><footer><div class="paginator"><a href="/2016/07/07/api-interface-specification/" class="prev">上一篇</a><a href="/2016/03/15/androidmanifest-how-to-merge/" class="next">下一篇</a></div><div class="copyright"><p>© 2015 - 2017 <a href="http://dxyoo7.github.io">Martin D</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML" integrity="sha384-crwIf/BuaWM9rM65iM+dWFldgQ1Un8jWZMuh3puxb8TOY9+linwLoI7ZHZT+aekW" crossorigin="anonymous"></script><script>(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;e=o.createElement(i);r=o.getElementsByTagName(i)[0];e.src='//www.google-analytics.com/analytics.js';r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));ga('create',"UA-65933410-1",'auto');ga('send','pageview');</script></body></html>
