@@ -2,9 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://dxyoo7.github.io/2018/04/11/Android-Architecture-Components-md/</loc>
+    
+    <lastmod>2018-04-11T08:37:08.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://dxyoo7.github.io/2017/11/29/fixing_npm_permissions/</loc>
+    
+    <lastmod>2017-11-29T03:04:00.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://dxyoo7.github.io/2017/11/28/face_recognition/</loc>
     
-    <lastmod>2017-11-28T08:23:25.000Z</lastmod>
+    <lastmod>2017-11-28T08:45:13.000Z</lastmod>
     
   </url>
   
@@ -16,28 +30,7 @@
   </url>
   
   <url>
-    <loc>http://dxyoo7.github.io/2016/03/11/android-65k-method-limit/</loc>
-    
-    <lastmod>2017-11-27T06:31:03.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://dxyoo7.github.io/2016/03/15/androidmanifest-how-to-merge/</loc>
-    
-    <lastmod>2017-11-27T06:31:03.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://dxyoo7.github.io/2016/11/01/android_project_struct/</loc>
-    
-    <lastmod>2017-11-27T06:31:03.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://dxyoo7.github.io/2016/07/07/api-interface-specification/</loc>
+    <loc>http://dxyoo7.github.io/2016/03/15/https-teq/</loc>
     
     <lastmod>2017-11-27T06:31:03.000Z</lastmod>
     
@@ -58,7 +51,14 @@
   </url>
   
   <url>
-    <loc>http://dxyoo7.github.io/2016/07/08/Android-Themes-An-in-depth-guide/</loc>
+    <loc>http://dxyoo7.github.io/2016/03/15/androidmanifest-how-to-merge/</loc>
+    
+    <lastmod>2017-11-27T06:31:03.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://dxyoo7.github.io/2016/07/07/api-interface-specification/</loc>
     
     <lastmod>2017-11-27T06:31:03.000Z</lastmod>
     
@@ -86,6 +86,13 @@
   </url>
   
   <url>
+    <loc>http://dxyoo7.github.io/2016/07/08/Android-Themes-An-in-depth-guide/</loc>
+    
+    <lastmod>2017-11-27T06:31:03.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://dxyoo7.github.io/2016/11/01/how-enable-strictmode/</loc>
     
     <lastmod>2017-11-27T06:31:03.000Z</lastmod>
@@ -100,7 +107,7 @@
   </url>
   
   <url>
-    <loc>http://dxyoo7.github.io/2016/03/15/https-teq/</loc>
+    <loc>http://dxyoo7.github.io/2016/03/11/android-65k-method-limit/</loc>
     
     <lastmod>2017-11-27T06:31:03.000Z</lastmod>
     
@@ -128,6 +135,13 @@
   </url>
   
   <url>
+    <loc>http://dxyoo7.github.io/2016/11/01/android_project_struct/</loc>
+    
+    <lastmod>2017-11-27T06:31:03.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://dxyoo7.github.io/2017/03/11/java_4_website_encoding/</loc>
     
     <lastmod>2017-11-27T06:31:03.000Z</lastmod>
@@ -136,13 +150,6 @@
   
   <url>
     <loc>http://dxyoo7.github.io/2017/03/12/java_5_transform_charset/</loc>
-    
-    <lastmod>2017-11-27T06:31:03.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://dxyoo7.github.io/2017/07/27/mark-flax-layout/</loc>
     
     <lastmod>2017-11-27T06:31:03.000Z</lastmod>
     
@@ -163,7 +170,7 @@
   </url>
   
   <url>
-    <loc>http://dxyoo7.github.io/2016/03/14/the-hexo-command/</loc>
+    <loc>http://dxyoo7.github.io/2017/07/27/mark-flax-layout/</loc>
     
     <lastmod>2017-11-27T06:31:03.000Z</lastmod>
     
@@ -171,6 +178,13 @@
   
   <url>
     <loc>http://dxyoo7.github.io/2016/03/03/syntax-of-markdown/</loc>
+    
+    <lastmod>2017-11-27T06:31:03.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://dxyoo7.github.io/2016/03/14/the-hexo-command/</loc>
     
     <lastmod>2017-11-27T06:31:03.000Z</lastmod>
     
