@@ -10,7 +10,7 @@ tags: face recognition
 ![in](https://raw.githubusercontent.com/dxyoo7/dxyoo7.github.io/hexo/attachment/face_detection/in.jpg)
 
 ## 简介
-前不久**Iphone X**发布，因为全面屏的关系，它取消了指纹识别，而添加了更酷的 **FaceID(人脸识别)** 模块，**FaceID** 不简单的运用在解锁上，还可以在支付表情上应用，给开发者带来更酷更丰富的应用，**Iphone X** 在多个硬件传感器的加持下，可以采集3万个点来感知用户的面部特征。
+前不久**Iphone X**发布，革命性的取消了**TouchID（指纹识别）**，而添加了更酷的 **FaceID(人脸识别)** 模块，**FaceID** 不简单的运用在解锁上，还可以在支付，表情等场景中应用，给开发者带来更酷更丰富的应用，**Iphone X** 在多个硬件传感器的加持下，可以采集3万个点来感知用户的面部特征。
 ![animoji](https://raw.githubusercontent.com/dxyoo7/dxyoo7.github.io/hexo/attachment/face_detection/animoji.gif)
 
 
@@ -62,7 +62,7 @@ tags: face recognition
 
 
 
-为了在HOG图像中找到脸部，我们需要做的是，与已知的一些HOG图案中，看起来最相似的部分。这些HOG图案都是重其他面部训练数据中提取出来的：
+为了在HOG图像中找到脸部，我们需要做的是，与已知的一些HOG图案中，看起来最相似的部分。这些HOG图案都是重其他面部训练数据中提取出来的。
 
 
 #### 第二步：脸部的不同姿势
@@ -92,10 +92,10 @@ tags: face recognition
 
 有了这68个点，我们就可以轻松的知道眼睛和嘴巴在哪儿了，后续我们将图片进行旋转，缩放和错切，使得眼睛和嘴巴尽可能的靠近中心。
 
-现在人脸基本上对齐了，这使得下一步更加准确
+现在人脸基本上对齐了，这使得下一步更加准确。
 
 
-### 第三步：给脸部编码
+#### 第三步：给脸部编码
 
 我们还有个核心的问题没有解决， 那就是如何区分不同的人脸。
 
